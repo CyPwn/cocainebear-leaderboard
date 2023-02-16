@@ -1,6 +1,3 @@
-// NodeJS example for the cocainebear-leaderboard "hack"
-// This is a very simple example, it does not handle errors, etc.
-
 // Import the CryptoJS library
 const CryptoJS = require("crypto-js");
 
@@ -17,8 +14,7 @@ function CoolFetch(name) {
             // Define the content-type as application/x-www-form-urlencoded so it sents the data as a form (url encoded)
             "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
         },
-        // Define the data (name, score, release) as a string (url encoded) 
-        // Check the readme for the release value
+        // Define the data (name, score, release) as a string (url encoded)
         "body": `name=${name}&score=${score}&release=${release}`,
 
         // Define the method as POST
@@ -28,7 +24,7 @@ function CoolFetch(name) {
 
 const names = ["CyP", "wnd"];
 
-// Run the function 5 times
+// Loop 10000 times
 for (let i = 0; i < 10000; i++) {
     // Loop through the names
     names.forEach(name => {
