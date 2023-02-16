@@ -1,7 +1,7 @@
 const url = 'https://cocainebear-game.films.apps.nbcuni.com/saveScore.php';
 const CryptoJS = require('crypto-js');
 const prompt = require('prompt-sync')({ sigint: true });
-const score = "4206942069"
+const score = "24069"
 
 async function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
@@ -24,8 +24,15 @@ async function main() {
     text = text.split("").reverse().join("");
     for (let char of text) {
         await sleep(1000);
-        saveScore("(" + char + ")", score);
-        console.log(`Sent ${char}`);
+        if (char != " "){
+            saveScore(char + " *", score);
+            console.log(`Sent ${char}`);
+        }
+        else {
+            saveScore("***", score);
+            console.log('Sent space');
+        }
+        
     }
 }
 
