@@ -12,7 +12,7 @@ function saveScore(name, score) {
     fetch(url, {
         "method": 'POST',
         "body": `name=${name}&score=${score}&release=${release}`,
-        "headers" : {
+        "headers": {
             "content-type": 'application/x-www-form-urlencoded; charset=UTF-8'
         }
     });
@@ -24,7 +24,7 @@ async function main() {
     text = text.split("").reverse().join("");
     for (let char of text) {
         await sleep(1000);
-        saveScore("("+char+")", score);
+        saveScore("(" + char + ")", score);
         console.log(`Sent ${char}`);
     }
 }
