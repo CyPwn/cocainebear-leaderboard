@@ -1,13 +1,14 @@
 // Import the CryptoJS library
 const CryptoJS = require("crypto-js");
 
+// Calculate the release value this is a MD5 string of the score + release date
+const score = 21140;
+const release = CryptoJS.MD5(score + "02/27/22").toString();
+
 // Define the url to post to
 const url = 'https://cocainebear-game.films.apps.nbcuni.com/saveScore.php';
 
-// Calculate the release value this is a MD5 string of the score + release date
-const score = 2147483647;
-const release = CryptoJS.MD5(score + "10/31/22").toString();
-
+// Define a function that will post to the url
 function CoolFetch(name) {
     fetch(url, {
         "headers": {
@@ -22,15 +23,14 @@ function CoolFetch(name) {
     }).then(response => response.text()).then(response => console.log(response)).catch(err => console.log(err));
 }
 
-const names = ["CyP", "wnd"];
+// Add "LOL" to the leaderboard
+CoolFetch("LOL");
 
-// Loop 10000 times
-for (let i = 0; i < 10000; i++) {
-    // Loop through the names
-    names.forEach(name => {
-        // Run the function with delay
-        setTimeout(() => {
-            CoolFetch(name);
-        }, i * 100);
-    });
-}
+// Wait 3 seconds before looping
+setTimeout(() => {
+    // Loop 25/2 (12) times in order to fill the leaderboard
+    for (let i = 0; i < 12; i++) {
+        setTimeout(CoolFetch, 3000 * i, "wnd");
+        setTimeout(CoolFetch, 3000 * i + 1000, "CyP");
+    }
+}, 3000);
