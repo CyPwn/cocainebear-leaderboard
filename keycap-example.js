@@ -26,15 +26,14 @@ async function main() {
     text = prompt('Enter the sentence you want to show on the site: ');
     text = text.toUpperCase();
     text = text.split("").reverse().join("");
-    const list = "ABCDEFGHIJKLMNPQRSTUVWXYZ";
     var counter = 0;
-    for (let char of text) {
 
+    for (let char of text) {
         // Timeout for 1 minute to avoid spamming the server
         await sleep(60000);
 
         // Notice the score was updated with the counter (to avoid detection)
-        if (char != " "){
+        if (char != " ") {
             saveScore(char + "I" + char, (score + counter).toString());
             console.log(`Sent ${char}`);
         }
@@ -44,7 +43,7 @@ async function main() {
         }
 
         // Aforementioned counter
-        counter+=20;
+        counter += 20;
     }
 }
 
