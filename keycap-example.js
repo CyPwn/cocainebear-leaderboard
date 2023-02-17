@@ -9,7 +9,6 @@ async function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
 }
 
-
 // Function remains virtually the same except for the date string
 function saveScore(name, score) {
     let release = CryptoJS.MD5(score + "02/27/22").toString();
