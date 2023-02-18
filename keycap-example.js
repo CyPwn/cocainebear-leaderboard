@@ -3,7 +3,7 @@ const CryptoJS = require('crypto-js');
 const prompt = require('prompt-sync')({ sigint: true });
 
 // Score starts low to avoid detection (yet still be above others)
-const score = 20640;
+const score = 19460;
 
 async function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
@@ -28,16 +28,16 @@ async function main() {
     var counter = 0;
 
     for (let char of text) {
-        // Timeout for 1 minute to avoid spamming the server
-        await sleep(60000);
+        // Timeout for a random time between 30 and 90 seconds to avoid spamming the server
+        await sleep(Math.floor(Math.random() * 60000) + 30000);
 
         // Notice the score was updated with the counter (to avoid detection)
         if (char != " ") {
-            saveScore(char + "I" + char, (score + counter).toString());
+            saveScore("XX" + char, (score + Math.floor(Math.random() * 40) + counter).toString());
             console.log(`Sent ${char}`);
         }
         else {
-            saveScore("LOL", (score + counter).toString());
+            saveScore("XXX", (score + counter).toString());
             console.log('Sent space');
         }
 
